@@ -1,0 +1,17 @@
+<table class=tblifts>
+  <thead>
+    <tr>
+      <th>Date</th>                    
+      <th>Day</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% result.each do |lift| %>
+    <tr>
+      <td><%= lift.date %>
+      <td><%= lift.weekday %>
+      <td><%= lift.time %>
+    </tr>    
+  <% end %>
+</table>

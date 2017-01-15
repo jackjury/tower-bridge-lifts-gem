@@ -1,0 +1,23 @@
+<table class=tblifts>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Dir</th>
+      <th>Vessel</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <% result.each do |date, lifts| %>
+    <tr>
+      <td colspan=3><%= date %></td>
+    </tr>
+    <% lifts.each do |lift|%>
+    <tr>
+      <td><%= lift.time %></td>
+      <td><%= lift.dir %></td>
+      <td><%= lift.vessel %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>

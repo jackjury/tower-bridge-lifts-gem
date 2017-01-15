@@ -1,0 +1,20 @@
+<table class=tblifts>
+  <thead>
+    <tr>
+      <th>Date</th>                    
+      <th>Day</th>                    
+      <th><%= result.values.map(&:count).reduce(:+) %></th>
+      <th>Times</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <% result.each do |date, lifts| %>
+    <tr>
+      <td><%= lifts.first.date %></td>
+      <td><%= lifts.first.weekday %></td>
+      <td><%= lifts.count %></td>
+      <td><%= lifts.map(&:time).join('&nbsp'*3) %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
