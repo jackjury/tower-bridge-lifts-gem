@@ -1,4 +1,4 @@
 #/bin/sh
 gem uninstall tower_bridge_lifts
 gem build tower_bridge_lifts.gemspec
-gem install tower_bridge_lifts-1.0.1.gem
+gem install tower_bridge_lifts-1.0.2.gem

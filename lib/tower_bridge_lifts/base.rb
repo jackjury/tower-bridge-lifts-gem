@@ -29,7 +29,7 @@ module TowerBridgeLifts
     end
 
     def fetch
-      lifts = []
+      @lifts = []
       error = nil
       page = Nokogiri::HTML(open(LIFTS_URL))
       page.css(('table tbody tr')).each do |line|  
