@@ -87,7 +87,7 @@ module TowerBridgeLifts
 
     def traffic
       return :allowed unless next_lift
-      ( time < self.next_lift.timestamp ) ? :allowed : :blocked 
+      ( time < next_lift.timestamp ) ? :allowed : :blocked 
     end
 
     def lifts(options=nil)
