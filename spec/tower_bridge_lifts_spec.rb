@@ -20,10 +20,28 @@ describe TowerBridgeLifts::Base do
     end
   end
 
-  it 'has one lift' do
-    lift = TowerBridgeLifts::Lift.new(timestamp: Time.now, vessel: "Vessel Name", direction: :up_river)
+  it 'has a next_lift if there is a scheduled' do
+    lift = TowerBridgeLifts::Lift.new(timestamp: tbl.time, vessel: "Vessel Name", direction: :up_river)
     tbl.lifts = [lift]
-    expect(tbl.lifts.count).to eq(1) 
+    expect(tbl.next_lift).to eq(lift)
+  end
+
+  it 'has no next_lift if scheduled lift is older than time + T_FULL_LIFT' do
+    lift = TowerBridgeLifts::Lift.new(timestamp: (tbl.time - TowerBridgeLifts::Base::T_FULL_LIFT), vessel: "Vessel Name", direction: :up_river)
+    tbl.lifts = [lift]
+    expect(tbl.next_lift).to be_nil
+  end
+
+  it 'has no traffic during the lift' do
+    lift1 = TowerBridgeLifts::Lift.new(timestamp: tbl.time, vessel: "Vessel Name", direction: :up_river)
+    lift2 = TowerBridgeLifts::Lift.new(timestamp: (tbl.time - TowerBridgeLifts::Base::T_FULL_LIFT + 1) , vessel: "Vessel Name", direction: :up_river)
+
+    tbl.lifts = [lift1]
+    expect(tbl.traffic).to eq(:blocked)
+
+    tbl.lifts = [lift2]
+    expect(tbl.traffic).to eq(:blocked)
+
   end
 
 end
