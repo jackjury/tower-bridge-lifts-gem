@@ -3,7 +3,7 @@
     <tr>
       <th>Date</th>                    
       <th>Day</th>                    
-      <th><%= result.values.map(&:count).reduce(:+) %></th>
+      <th>Lifts</th>
       <th>Times</th>
     </tr>
   </thead>
@@ -16,5 +16,6 @@
       <td><%= lifts.map(&:time).join('&nbsp'*3) %>
     </tr>
     <% end %>
+    <tr><td colspan="2">Total:</td><td><%= result.values.map(&:count).reduce(:+) %></td><td></td></tr>
   </tbody>
 </table>
