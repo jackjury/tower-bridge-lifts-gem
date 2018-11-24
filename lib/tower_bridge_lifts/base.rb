@@ -8,7 +8,7 @@ module TowerBridgeLifts
     attr_accessor :error, :updated
     attr_accessor :lifts if ENV['RACK_ENV'] == 'test'
 
-    LIFTS_URL         =   'http://www.towerbridge.org.uk/lift-times/'
+    LIFTS_URL         =   'https://www.towerbridge.org.uk/lift-times/'
     ALLOWED_COMMANDS  =   %w(lifts next_lift bascules time traffic status server)
     EXPIRE_TIME       =   60 * 15 
 
